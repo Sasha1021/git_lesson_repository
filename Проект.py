@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QWidget, QApplication, QPushButton, QHBoxLayout
 class Dnevnik(QWidget):
     def __init__(self):
         super().__init__()
-        self.setGeometry(300, 350, 300, 350)
+        self.setGeometry(300, 320, 300, 320)
         self.setWindowTitle('Дневник огородника')
         self.initUI()
 
@@ -20,11 +20,18 @@ class Dnevnik(QWidget):
         lbl.setPixmap(pixmap)
         hbox.addWidget(lbl)
         self.setLayout(hbox)
-        self.nazvanie_label = QPushButton("Дневник огородника", self)
-        self.nazvanie_label.resize(250, 45)
-        self.nazvanie_label.setFont(QtGui.QFont("Segoe Print", 14, QtGui.QFont.Bold))
-        self.nazvanie_label.move(45, 20)
-
+        self.nazvanie_label = QLabel(self)
+        self.nazvanie_label.setText("Дневник огородника")
+        self.nazvanie_label.resize(350, 35)
+        self.nazvanie_label.setFont(QtGui.QFont("Segoe Print", 16, QtGui.QFont.Bold))
+        self.nazvanie_label.move(34, 30)
+        self.klik_label = QLabel(self)
+        self.klik_label = QPushButton("-->", self)
+        self.klik_label.resize(60, 35)
+        self.klik_label.setFont(QtGui.QFont("Segoe Print", 14, QtGui.QFont.Bold))
+        self.klik_label.show()
+        self.klik_label.move(450, 270)
+        
 class Soderg(QWidget):
     def __init__(self):
         super().__init__()
@@ -43,41 +50,49 @@ class Soderg(QWidget):
         self.initUI()
 
     def initUI(self):
+        self.plan_label = QLabel(self)
+        self.plan_label = QPushButton("Список задач", self)
+        self.plan_label.resize(160, 35)
+        self.plan_label.setFont(QtGui.QFont("Segoe Print", 10, QtGui.QFont.Bold))
+        self.plan_label.show()
+        self.plan_label.move(160, 85)
+
+        self.rast_label = QLabel(self)
+        self.rast_label = QPushButton("Перечень растений", self)
+        self.rast_label.resize(196, 35)
+        self.rast_label.setFont(QtGui.QFont("Segoe Print", 10, QtGui.QFont.Bold))
+        self.rast_label.show()
+        self.rast_label.move(143, 135)
+
         self.lyna_label = QLabel(self)
         self.lyna_label = QPushButton("Лунный календарь", self)
-        self.lyna_label.resize(200, 35)
+        self.lyna_label.resize(220, 35)
         self.lyna_label.setFont(QtGui.QFont("Segoe Print", 10, QtGui.QFont.Bold))
         self.lyna_label.show()
-        self.lyna_label.move(140, 85)
+        self.lyna_label.move(130, 185)
 
         self.blagodni_label = QLabel(self)
         self.blagodni_label = QPushButton("Благоприятные дни для посадки", self)
         self.blagodni_label.resize(330, 35)
         self.blagodni_label.setFont(QtGui.QFont("Segoe Print", 10, QtGui.QFont.Bold))
         self.blagodni_label.show()
-        self.blagodni_label.move(80, 135)
-
-        self.sad_label = QLabel(self)
-        self.sad_label = QPushButton("Перечень обитателей в моем саду", self)
-        self.sad_label.resize(370, 35)
-        self.sad_label.setFont(QtGui.QFont("Segoe Print", 10, QtGui.QFont.Bold))
-        self.sad_label.show()
-        self.sad_label.move(60, 185)
+        self.blagodni_label.move(80, 235)
 
         self.blagorabot_label = QLabel(self)
         self.blagorabot_label = QPushButton("Благоприятные дни для проведения работ", self)
         self.blagorabot_label.resize(450, 35)
         self.blagorabot_label.setFont(QtGui.QFont("Segoe Print", 10, QtGui.QFont.Bold))
         self.blagorabot_label.show()
-        self.blagorabot_label.move(15, 235)
+        self.blagorabot_label.move(15, 285)
 
         self.nazad_label = QLabel(self)
-        self.nazad_label = QPushButton("Назад", self)
-        self.nazad_label.resize(150, 35)
-        self.nazad_label.setFont(QtGui.QFont("Segoe Print", 10, QtGui.QFont.Bold))
+        self.nazad_label = QPushButton("<--", self)
+        self.nazad_label.resize(100, 35)
+        self.nazad_label.setFont(QtGui.QFont("Segoe Print", 14, QtGui.QFont.Bold))
         self.nazad_label.show()
-        self.nazad_label.move(170, 350)
+        self.nazad_label.move(190, 350)
 
+        
 class Lyna(QWidget):
     def __init__(self):
         super().__init__()
@@ -390,7 +405,7 @@ class December(QWidget):
         self.nazad_label.show()
         self.nazad_label.move(200, 700)
 
-
+        
 class Blagodni(QWidget):
     def __init__(self):
         super().__init__()
@@ -407,25 +422,24 @@ class Blagodni(QWidget):
         self.nazad_label.show()
         self.nazad_label.move(810, 710)
 
-
+        
 class Blagorabot(QWidget):
     def __init__(self):
         super().__init__()
+        self.setWindowTitle('Благоприятные дни для проведения работ')
         hbox = QHBoxLayout(self)
-        pixmap = QPixmap("13.jpg")
-
+        pixmap = QPixmap("03.png")
         lbl = QLabel(self)
         lbl.setPixmap(pixmap)
-
         hbox.addWidget(lbl)
-        self.setLayout(hbox)
-
         self.nazad_label = QLabel(self)
         self.nazad_label = QPushButton("Назад", self)
+        self.nazad_label.resize(130, 35)
+        self.nazad_label.setFont(QtGui.QFont("Segoe Print", 10, QtGui.QFont.Bold))
         self.nazad_label.show()
-        self.nazad_label.move(200, 700)
+        self.nazad_label.move(880, 710)
 
-
+        
 class MainWindow(QMainWindow):
     def w_1(self):
         self.w1 = Dnevnik()
@@ -433,12 +447,14 @@ class MainWindow(QMainWindow):
         self.w1.nazvanie_label.clicked.connect(self.w1.close)
         self.w1.show()
 
-    def w_2(self):
+        def w_2(self):
         self.w2 = Soderg()
         self.w2.lyna_label.clicked.connect(self.w_3)
         self.w2.lyna_label.clicked.connect(self.w2.close)
         self.w2.blagodni_label.clicked.connect(self.w_4)
         self.w2.blagodni_label.clicked.connect(self.w2.close)
+        self.w2.blagorabot_label.clicked.connect(self.w_17)
+        self.w2.blagorabot_label.clicked.connect(self.w2.close)
         self.w2.nazad_label.clicked.connect(self.w_1)
         self.w2.nazad_label.clicked.connect(self.w2.close)
         self.w2.show()
@@ -550,8 +566,14 @@ class MainWindow(QMainWindow):
         self.w16.nazad_label.clicked.connect(self.w_3)
         self.w16.nazad_label.clicked.connect(self.w16.close)
         self.w16.show()
+        
+    def w_17(self):
+        self.w17 = Blagorabot()
+        self.w17.nazad_label.clicked.connect(self.w_2)
+        self.w17.nazad_label.clicked.connect(self.w17.close)
+        self.w17.show()
 
-
+        
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     w = MainWindow()
